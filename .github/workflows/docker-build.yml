@@ -17,6 +17,9 @@ jobs:
        - name: Checkout repository
          uses: actions/checkout@v3
          
+       - name: Check virtualization support
+         run: sysctl -a | grep -i vmx
+
        - name: Install Docker
          run: |
           brew install docker colima
