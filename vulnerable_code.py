@@ -11,6 +11,8 @@ cursor = conn.cursor()
 # Create users table (Missing parameterized queries)
 cursor.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, password TEXT)")
 
+# comment
+
 @app.get("/")
 async def root():
     # Missing proper content-type and security headers
