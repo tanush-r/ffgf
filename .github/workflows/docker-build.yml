@@ -16,13 +16,16 @@ jobs:
     steps:
        - name: Checkout repository
          uses: actions/checkout@v3
+         
+       - name: Install Docker
+         run: |
+          brew install docker
+          colima start
 
-      # Step 4: Build Docker Image for ${{ matrix.service }}
        - name: Build Docker Image
          run: |
             docker build -t tanushr/test .
   
-      # Step 5: Push Docker Image to Registry (Optional)
        - name: Push Docker Image to Registry
          run: |
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
